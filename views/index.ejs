@@ -8,20 +8,21 @@
     <title>Widget Assessment</title>
 </head>
 <body>
-    <h1>Wacky Widgets</h1>
-    <!-- if else statement goes here -->
-    <h3>No Widgets Exist!</h3>
-    <hr>
-
-    <!-- output container here -->
-    <section class="add-widget">
-        <form method="POST" action="/<% %>/?_method=DELETE">
-        <h2>Description</h2>
-        <h3>Quantity: <%= %></h3>
-        <button type="submit">DELETE</button>
-        </form>
+    <h1>Wacky Widgets!</h1>
+    <% if (allWidgets.length === 0) { %>
+        <h3>No Widgets Exist <h3>
+    <% } else { %>
+    <div>
+    <% allWidgets.forEach(w => { %>
+    <section>
+            <h2><%= w.description %></h2>
+            <p>Quantity: <%= w.quantity %></p>
+            <form method="POST" action= "/<%= w.id %>/?_method=DELETE">
+            <input type="Submit" value="DELETE"></form>
     </section>
-
+            <% }) %>
+    </div>
+    <% } %>
     <hr>
      <!-- form section here -->
     <h4>Add Widget</h4>
